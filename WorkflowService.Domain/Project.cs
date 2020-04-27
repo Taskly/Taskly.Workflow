@@ -18,13 +18,28 @@ namespace WorkflowService.Domain
             _workItems = new List<WorkItem>(workItems);
         }
 
-        public string Title { get; }
+        public string Title { get; private set; }
 
-        public string Description { get; }
+        public string Description { get; private set; }
 
         public IReadOnlyCollection<WorkItemStatus> AvailableStatuses => _availableStatuses;
 
         public IReadOnlyCollection<WorkItem> WorkItems => _workItems;
+
+        public void UpdateTitle(string title)
+        {
+            Title = title;
+        }
+
+        public void UpdateDescription(string description)
+        {
+            Description = description;
+        }
+
+        public void AddWorkItem(WorkItem workItem)
+        {
+            _workItems.Add(workItem);
+        }
 
         private readonly List<WorkItemStatus> _availableStatuses;
         private readonly List<WorkItem> _workItems;

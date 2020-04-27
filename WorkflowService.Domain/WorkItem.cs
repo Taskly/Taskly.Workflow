@@ -14,10 +14,25 @@
             Status = status;
         }
 
-        public string Title { get; }
+        public string Title { get; private set; }
 
-        public string Description { get; }
+        public string Description { get; private set; }
 
-        public WorkItemStatus Status { get; }
+        public WorkItemStatus Status { get; private set; }
+
+        public void UpdateTitle(string title)
+        {
+            Title = title;
+        }
+
+        public void UpdateDescription(string description)
+        {
+            Description = description;
+        }
+
+        public void ChangeStatus(WorkItemStatus status)
+        {
+            Status = status;
+        }
     }
 }
