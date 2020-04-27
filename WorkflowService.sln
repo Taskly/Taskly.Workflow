@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkflowService.Domain", "WorkflowService.Domain\WorkflowService.Domain.csproj", "{CC82C49F-F644-4BD6-97F8-769BEBA5CA3F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkflowService.WebApi", "WorkflowService.WebApi\WorkflowService.WebApi.csproj", "{D4B3F0FE-AA3C-45A4-BFC6-479ADDE1EE8F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,17 @@ Global
 		{CC82C49F-F644-4BD6-97F8-769BEBA5CA3F}.Release|x64.Build.0 = Release|Any CPU
 		{CC82C49F-F644-4BD6-97F8-769BEBA5CA3F}.Release|x86.ActiveCfg = Release|Any CPU
 		{CC82C49F-F644-4BD6-97F8-769BEBA5CA3F}.Release|x86.Build.0 = Release|Any CPU
+		{D4B3F0FE-AA3C-45A4-BFC6-479ADDE1EE8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4B3F0FE-AA3C-45A4-BFC6-479ADDE1EE8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4B3F0FE-AA3C-45A4-BFC6-479ADDE1EE8F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D4B3F0FE-AA3C-45A4-BFC6-479ADDE1EE8F}.Debug|x64.Build.0 = Debug|Any CPU
+		{D4B3F0FE-AA3C-45A4-BFC6-479ADDE1EE8F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D4B3F0FE-AA3C-45A4-BFC6-479ADDE1EE8F}.Debug|x86.Build.0 = Debug|Any CPU
+		{D4B3F0FE-AA3C-45A4-BFC6-479ADDE1EE8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4B3F0FE-AA3C-45A4-BFC6-479ADDE1EE8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4B3F0FE-AA3C-45A4-BFC6-479ADDE1EE8F}.Release|x64.ActiveCfg = Release|Any CPU
+		{D4B3F0FE-AA3C-45A4-BFC6-479ADDE1EE8F}.Release|x64.Build.0 = Release|Any CPU
+		{D4B3F0FE-AA3C-45A4-BFC6-479ADDE1EE8F}.Release|x86.ActiveCfg = Release|Any CPU
+		{D4B3F0FE-AA3C-45A4-BFC6-479ADDE1EE8F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
