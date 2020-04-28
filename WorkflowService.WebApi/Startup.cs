@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WorkflowService.WebApi.Config;
 
 namespace WorkflowService.WebApi
 {
@@ -17,6 +18,10 @@ namespace WorkflowService.WebApi
 
         public void ConfigureServices(IServiceCollection services)
         {
+            var appConfig = new AppConfig();
+            Configuration.Bind(appConfig);
+
+            services.AddDatabaseRepositories(appConfig);
             services.AddControllers();
             services.AddSwaggerDocumentation();
         }
