@@ -2,17 +2,23 @@
 {
     public class WorkItem
     {
-        public WorkItem(string title, WorkItemStatus status)
-            : this(title, string.Empty, status)
+        public WorkItem(string projectId, string title, string description, WorkItemStatus status)
+            : this(string.Empty, projectId, title, description, status)
         {
         }
 
-        public WorkItem(string title, string description, WorkItemStatus status)
+        private WorkItem(string id, string projectId, string title, string description, WorkItemStatus status)
         {
+            Id = id;
+            ProjectId = projectId;
             Title = title;
             Description = description;
             Status = status;
         }
+
+        public string Id { get; }
+
+        public string ProjectId { get; }
 
         public string Title { get; private set; }
 
@@ -20,13 +26,9 @@
 
         public WorkItemStatus Status { get; private set; }
 
-        public void UpdateTitle(string title)
+        public void UpdateInfo(string title, string description)
         {
             Title = title;
-        }
-
-        public void UpdateDescription(string description)
-        {
             Description = description;
         }
 

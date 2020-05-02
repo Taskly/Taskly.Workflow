@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WorkflowService.Domain;
-using WorkflowService.WebApi.Dto;
+using WorkflowService.WebApi.Dto.Projects;
 
 namespace WorkflowService.WebApi.Controllers
 {
@@ -16,17 +16,17 @@ namespace WorkflowService.WebApi.Controllers
             _projectsRepository = projectsRepository;
         }
 
-        [HttpGet]
+        /*[HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<ProjectsInfoList>> GetProjectsList()
+        public async Task<ActionResult<ProjectsList>> GetProjectsList()
         {
             List<Project> projects = await _projectsRepository.GetProjectsInfo();
             List<ProjectInfoDto> dtoItems = projects.Select(x => new ProjectInfoDto(x.Title)).ToList();
-            var dto = new ProjectsInfoList(dtoItems);
+            var dto = new ProjectsList(dtoItems);
             return Ok(dto);
-        }
+        }*/
 
-        [HttpGet("{id}")]
+        /*[HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<ProjectDto>> GetProject(string id)
@@ -34,7 +34,7 @@ namespace WorkflowService.WebApi.Controllers
             Project project = await _projectsRepository.GetProject(id);
             var dto = new ProjectDto(project);
             return Ok(dto);
-        }
+        }*/
 
         private readonly IProjectsRepository _projectsRepository;
     }

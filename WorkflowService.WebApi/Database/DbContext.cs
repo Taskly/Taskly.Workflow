@@ -28,13 +28,13 @@ namespace WorkflowService.WebApi.Database
             BsonClassMap.RegisterClassMap<Project>(cm =>
             {
                 cm.AutoMap();
-                cm.MapCreator(x => new Project(x.Title));
+                cm.MapCreator(x => new Project(x.Title, x.Description, x.AvailableStatuses));
             });
 
             BsonClassMap.RegisterClassMap<WorkItem>(cm =>
             {
                 cm.AutoMap();
-                cm.MapCreator(x => new WorkItem(x.Title, x.Status));
+                cm.MapCreator(x => new WorkItem(x.ProjectId, x.Title, x.Description, x.Status));
             });
         }
     }

@@ -4,19 +4,20 @@ namespace WorkflowService.Domain
 {
     public class Project
     {
-        public Project(string title)
-            : this(title, string.Empty, new List<WorkItemStatus>(), new List<WorkItem>())
+        public Project(string title, string description, IEnumerable<WorkItemStatus> availableStatuses)
+            : this(string.Empty, title, description, availableStatuses)
         {
         }
 
-        public Project(string title, string description, IEnumerable<WorkItemStatus> availableStatuses,
-            IEnumerable<WorkItem> workItems)
+        private Project(string id, string title, string description, IEnumerable<WorkItemStatus> availableStatuses)
         {
+            Id = id;
             Title = title;
             Description = description;
             _availableStatuses = new List<WorkItemStatus>(availableStatuses);
-            _workItems = new List<WorkItem>(workItems);
         }
+
+        public string Id { get; }
 
         public string Title { get; private set; }
 
@@ -24,24 +25,37 @@ namespace WorkflowService.Domain
 
         public IReadOnlyCollection<WorkItemStatus> AvailableStatuses => _availableStatuses;
 
-        public IReadOnlyCollection<WorkItem> WorkItems => _workItems;
-
-        public void UpdateTitle(string title)
+        public void UpdateInfo(string title, string description)
         {
             Title = title;
-        }
-
-        public void UpdateDescription(string description)
-        {
             Description = description;
         }
 
-        public void AddWorkItem(WorkItem workItem)
+        public void AddAvailableStatus(WorkItemStatus status)
         {
-            _workItems.Add(workItem);
+            if (_availableStatuses.Contains(status))
+            {
+                // TODO: throw
+            }
+
+            _availableStatuses.Add(status);
+        }
+
+        public void RemoveAvailableStatus(WorkItemStatus status)
+        {
+            if (!_availableStatuses.Contains(status))
+            {
+                // TODO: throw
+            }
+
+            if (_availableStatuses.Count == 1)
+            {
+                // TODO: throw
+            }
+
+            _availableStatuses.Remove(status);
         }
 
         private readonly List<WorkItemStatus> _availableStatuses;
-        private readonly List<WorkItem> _workItems;
     }
 }

@@ -5,7 +5,7 @@ namespace WorkflowService.Domain
 {
     public interface IProjectsRepository
     {
-        Task<List<Project>> GetProjectsInfo();
+        Task<List<Project>> GetProjects();
 
         Task<Project> GetProject(string id);
 
