@@ -19,42 +19,11 @@ namespace Taskly.Workflow.Domain
 
         public string Id { get; }
 
-        public string Title { get; private set; }
+        public string Title { get; set; }
 
-        public string Description { get; private set; }
+        public string Description { get; set; }
 
         public IReadOnlyCollection<WorkItemStatus> AvailableStatuses => _availableStatuses;
-
-        public void UpdateInfo(string title, string description)
-        {
-            Title = title;
-            Description = description;
-        }
-
-        public void AddAvailableStatus(WorkItemStatus status)
-        {
-            if (_availableStatuses.Contains(status))
-            {
-                // TODO: throw
-            }
-
-            _availableStatuses.Add(status);
-        }
-
-        public void RemoveAvailableStatus(WorkItemStatus status)
-        {
-            if (!_availableStatuses.Contains(status))
-            {
-                // TODO: throw
-            }
-
-            if (_availableStatuses.Count == 1)
-            {
-                // TODO: throw
-            }
-
-            _availableStatuses.Remove(status);
-        }
 
         private readonly List<WorkItemStatus> _availableStatuses;
     }

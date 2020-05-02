@@ -20,21 +20,10 @@
 
         public string ProjectId { get; }
 
-        public string Title { get; private set; }
+        public string Title { get; set; }
 
-        public string Description { get; private set; }
+        public string Description { get; set; }
 
-        public WorkItemStatus Status { get; private set; }
-
-        public void UpdateInfo(string title, string description)
-        {
-            Title = title;
-            Description = description;
-        }
-
-        public void ChangeStatus(WorkItemStatus status)
-        {
-            Status = status;
-        }
+        public WorkItemStatus Status { get; set; }
     }
 }

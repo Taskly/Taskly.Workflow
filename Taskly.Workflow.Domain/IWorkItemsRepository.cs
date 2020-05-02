@@ -10,5 +10,7 @@ namespace Taskly.Workflow.Domain
         Task<WorkItem> GetWorkItem(string id);
 
         Task SaveWorkItem(WorkItem workItem);
+
+        Task DeleteWorkItem(string id);
     }
 }
