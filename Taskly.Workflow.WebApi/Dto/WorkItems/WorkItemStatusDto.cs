@@ -1,4 +1,4 @@
-﻿namespace WorkflowService.WebApi.Dto.WorkItems
+﻿namespace Taskly.Workflow.WebApi.Dto.WorkItems
 {
     public class WorkItemStatusDto
     {

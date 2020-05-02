@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace WorkflowService.WebApi.Dto.Projects
+namespace Taskly.Workflow.WebApi.Dto.Projects
 {
     public class ProjectsList : ListBase<ProjectDto>
     {

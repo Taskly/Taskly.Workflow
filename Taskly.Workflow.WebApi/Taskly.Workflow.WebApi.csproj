@@ -10,7 +10,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\WorkflowService.Domain\WorkflowService.Domain.csproj" />
+      <ProjectReference Include="..\Taskly.Workflow.Domain\Taskly.Workflow.Domain.csproj" />
     </ItemGroup>
 
 </Project>

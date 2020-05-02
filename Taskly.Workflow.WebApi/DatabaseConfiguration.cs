@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using WorkflowService.WebApi.Config;
-using WorkflowService.WebApi.Database;
+using Taskly.Workflow.WebApi.Config;
+using Taskly.Workflow.WebApi.Database;
 
-namespace WorkflowService.WebApi
+namespace Taskly.Workflow.WebApi
 {
     internal static class DatabaseConfiguration
     {

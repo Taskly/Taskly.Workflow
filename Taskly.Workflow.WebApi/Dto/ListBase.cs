@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace WorkflowService.WebApi.Dto
+namespace Taskly.Workflow.WebApi.Dto
 {
     public abstract class ListBase<T>
     {

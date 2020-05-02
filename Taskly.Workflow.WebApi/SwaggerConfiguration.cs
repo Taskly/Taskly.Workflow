@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 
-namespace WorkflowService.WebApi
+namespace Taskly.Workflow.WebApi
 {
     internal static class SwaggerConfiguration
     {

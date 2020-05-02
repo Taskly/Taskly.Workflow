@@ -1,4 +1,4 @@
-﻿namespace WorkflowService.WebApi.Config
+﻿namespace Taskly.Workflow.WebApi.Config
 {
     public class MongoConfig
     {

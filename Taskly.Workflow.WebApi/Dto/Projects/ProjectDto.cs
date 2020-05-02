@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using WorkflowService.WebApi.Dto.WorkItems;
+using Taskly.Workflow.WebApi.Dto.WorkItems;
 
-namespace WorkflowService.WebApi.Dto.Projects
+namespace Taskly.Workflow.WebApi.Dto.Projects
 {
     public class ProjectDto
     {

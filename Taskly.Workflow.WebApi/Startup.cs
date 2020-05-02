@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using WorkflowService.WebApi.Config;
+using Taskly.Workflow.WebApi.Config;
 
-namespace WorkflowService.WebApi
+namespace Taskly.Workflow.WebApi
 {
     public class Startup
     {

@@ -1,9 +1,9 @@
 ﻿using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
-using WorkflowService.Domain;
-using WorkflowService.WebApi.Config;
+using Taskly.Workflow.Domain;
+using Taskly.Workflow.WebApi.Config;
 
-namespace WorkflowService.WebApi.Database
+namespace Taskly.Workflow.WebApi.Database
 {
     public class DbContext
     {

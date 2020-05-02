@@ -1,6 +1,6 @@
-﻿using WorkflowService.Domain;
+﻿using Taskly.Workflow.Domain;
 
-namespace WorkflowService.WebApi.Dto.WorkItems
+namespace Taskly.Workflow.WebApi.Dto.WorkItems
 {
     public class WorkItemDto
     {

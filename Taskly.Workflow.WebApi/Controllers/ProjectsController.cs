@@ -3,10 +3,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using WorkflowService.Domain;
-using WorkflowService.WebApi.Dto.Projects;
+using Taskly.Workflow.Domain;
+using Taskly.Workflow.WebApi.Dto.Projects;
 
-namespace WorkflowService.WebApi.Controllers
+namespace Taskly.Workflow.WebApi.Controllers
 {
     [Route("api/projects")]
     public class ProjectsController : ControllerBase

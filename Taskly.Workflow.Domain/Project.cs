@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace WorkflowService.Domain
+namespace Taskly.Workflow.Domain
 {
     public class Project
     {

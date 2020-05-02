@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace WorkflowService.Domain
+namespace Taskly.Workflow.Domain
 {
     public interface IProjectsRepository
     {

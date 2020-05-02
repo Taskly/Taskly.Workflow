@@ -1,4 +1,4 @@
-﻿namespace WorkflowService.Domain
+﻿namespace Taskly.Workflow.Domain
 {
     public class WorkItem
     {
