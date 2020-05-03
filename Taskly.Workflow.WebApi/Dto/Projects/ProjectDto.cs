@@ -1,16 +1,21 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using Taskly.Workflow.Domain;
 using Taskly.Workflow.WebApi.Dto.WorkItems;
 
 namespace Taskly.Workflow.WebApi.Dto.Projects
 {
     public class ProjectDto
     {
-        public ProjectDto(string title, string description, List<WorkItemStatusDto> availableStatuses)
+        public ProjectDto(Project model)
         {
-            Title = title;
-            Description = description;
-            AvailableStatuses = availableStatuses;
+            Id = model.Id;
+            Title = model.Title;
+            Description = model.Description;
+            AvailableStatuses = model.AvailableStatuses.Select(x => new WorkItemStatusDto(x)).ToList();
         }
+
+        public string Id { get; set; }
 
         public string Title { get; set; }
 

@@ -21,7 +21,7 @@ namespace Taskly.Workflow.WebApi
             var appConfig = new AppConfig();
             Configuration.Bind(appConfig);
 
-            services.AddDatabaseRepositories(appConfig);
+            // services.AddDatabaseRepositories(appConfig);
             services.AddControllers();
             services.AddSwaggerDocumentation();
         }

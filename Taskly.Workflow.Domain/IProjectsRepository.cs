@@ -9,6 +9,6 @@ namespace Taskly.Workflow.Domain
 
         Task<Project> GetProject(string id);
 
-        Task SaveProject(Project project);
+        Task<Project> SaveProject(Project project);
     }
 }

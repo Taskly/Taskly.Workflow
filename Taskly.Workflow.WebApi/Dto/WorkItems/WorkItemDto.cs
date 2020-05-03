@@ -4,17 +4,20 @@ namespace Taskly.Workflow.WebApi.Dto.WorkItems
 {
     public class WorkItemDto
     {
-        public WorkItemDto(string title, string description, WorkItemStatusDto status)
+        public WorkItemDto(WorkItem model)
         {
-            Title = title;
-            Description = description;
-            Status = status;
+            Id = model.Id;
+            Title = model.Title;
+            Description = model.Description;
+            Status = new WorkItemStatusDto(model.Status);
         }
 
-        public string Title { get; private set; }
+        public string Id { get; set; }
 
-        public string Description { get; private set; }
+        public string Title { get; set; }
 
-        public WorkItemStatusDto Status { get; private set; }
+        public string Description { get; set; }
+
+        public WorkItemStatusDto Status { get; set; }
     }
 }
