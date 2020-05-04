@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Taskly.Workflow.Domain;
@@ -18,7 +19,7 @@ namespace Taskly.Workflow.WebApi.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<WorkItemDto>> GetWorkItems(string id)
+        public async Task<ActionResult<WorkItemDto>> GetWorkItems(Guid id)
         {
             WorkItem workItem = await _workItemsRepository.GetWorkItem(id);
             var dto = new WorkItemDto(workItem);
@@ -40,7 +41,7 @@ namespace Taskly.Workflow.WebApi.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult> DeleteWorkItem(string id)
+        public async Task<ActionResult> DeleteWorkItem(Guid id)
         {
             await _workItemsRepository.DeleteWorkItem(id);
             return Ok();

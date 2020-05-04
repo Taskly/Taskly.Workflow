@@ -1,13 +1,15 @@
-﻿namespace Taskly.Workflow.Domain
+﻿using System;
+
+namespace Taskly.Workflow.Domain
 {
     public class WorkItem
     {
-        public WorkItem(string projectId, string title, string description, WorkItemStatus status)
-            : this(string.Empty, projectId, title, description, status)
+        public WorkItem(Guid projectId, string title, string description, WorkItemStatus status)
+            : this(Guid.Empty, projectId, title, description, status)
         {
         }
 
-        private WorkItem(string id, string projectId, string title, string description, WorkItemStatus status)
+        private WorkItem(Guid id, Guid projectId, string title, string description, WorkItemStatus status)
         {
             Id = id;
             ProjectId = projectId;
@@ -16,9 +18,9 @@
             Status = status;
         }
 
-        public string Id { get; }
+        public Guid Id { get; private set; }
 
-        public string ProjectId { get; }
+        public Guid ProjectId { get; }
 
         public string Title { get; set; }
 

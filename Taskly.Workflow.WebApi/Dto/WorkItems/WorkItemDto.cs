@@ -1,9 +1,14 @@
-﻿using Taskly.Workflow.Domain;
+﻿using System;
+using Taskly.Workflow.Domain;
 
 namespace Taskly.Workflow.WebApi.Dto.WorkItems
 {
     public class WorkItemDto
     {
+        public WorkItemDto()
+        {
+        }
+
         public WorkItemDto(WorkItem model)
         {
             Id = model.Id;
@@ -12,7 +17,7 @@ namespace Taskly.Workflow.WebApi.Dto.WorkItems
             Status = new WorkItemStatusDto(model.Status);
         }
 
-        public string Id { get; set; }
+        public Guid Id { get; set; }
 
         public string Title { get; set; }
 

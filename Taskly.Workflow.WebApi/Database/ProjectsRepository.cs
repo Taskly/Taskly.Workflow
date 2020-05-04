@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -20,7 +21,7 @@ namespace Taskly.Workflow.WebApi.Database
             return projects;
         }
 
-        public async Task<Project> GetProject(string id)
+        public async Task<Project> GetProject(Guid id)
         {
             Project project = await _dbContext.Projects.Find(x => x.Id == id).FirstOrDefaultAsync();
             return project;
@@ -28,13 +29,15 @@ namespace Taskly.Workflow.WebApi.Database
 
         public async Task<Project> SaveProject(Project project)
         {
-            var replaceOptions = new ReplaceOptions
+            if (project.Id == Guid.Empty)
             {
-                IsUpsert = true
-            };
+                await _dbContext.Projects.InsertOneAsync(project);
+            }
+            else
+            {
+                await _dbContext.Projects.ReplaceOneAsync(x => x.Id == project.Id, project);
+            }
 
-            await _dbContext.Projects.ReplaceOneAsync(x => x.Id == project.Id, project,
-                replaceOptions);
             return project;
         }
 

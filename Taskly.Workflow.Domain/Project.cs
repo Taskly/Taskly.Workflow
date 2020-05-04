@@ -1,15 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Taskly.Workflow.Domain
 {
     public class Project
     {
         public Project(string title, string description, IEnumerable<WorkItemStatus> availableStatuses)
-            : this(string.Empty, title, description, availableStatuses)
+            : this(Guid.Empty, title, description, availableStatuses)
         {
         }
 
-        private Project(string id, string title, string description, IEnumerable<WorkItemStatus> availableStatuses)
+        private Project(Guid id, string title, string description, IEnumerable<WorkItemStatus> availableStatuses)
         {
             Id = id;
             Title = title;
@@ -17,7 +18,7 @@ namespace Taskly.Workflow.Domain
             _availableStatuses = new List<WorkItemStatus>(availableStatuses);
         }
 
-        public string Id { get; }
+        public Guid Id { get; private set; }
 
         public string Title { get; set; }
 

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using MongoDB.Driver;
 using Taskly.Workflow.Domain;
@@ -12,13 +13,13 @@ namespace Taskly.Workflow.WebApi.Database
             _dbContext = dbContext;
         }
 
-        public async Task<List<WorkItem>> GetWorkItemsByProject(string projectId)
+        public async Task<List<WorkItem>> GetWorkItemsByProject(Guid projectId)
         {
             List<WorkItem> workItems = await _dbContext.WorkItems.Find(x => x.ProjectId == projectId).ToListAsync();
             return workItems;
         }
 
-        public async Task<WorkItem> GetWorkItem(string id)
+        public async Task<WorkItem> GetWorkItem(Guid id)
         {
             WorkItem workItem = await _dbContext.WorkItems.Find(x => x.Id == id).FirstOrDefaultAsync();
             return workItem;
@@ -26,17 +27,19 @@ namespace Taskly.Workflow.WebApi.Database
 
         public async Task<WorkItem> SaveWorkItem(WorkItem workItem)
         {
-            var replaceOptions = new ReplaceOptions
+            if (workItem.Id == Guid.Empty)
             {
-                IsUpsert = true
-            };
+                await _dbContext.WorkItems.InsertOneAsync(workItem);
+            }
+            else
+            {
+                await _dbContext.WorkItems.ReplaceOneAsync(x => x.Id == workItem.Id, workItem);
+            }
 
-            await _dbContext.WorkItems.ReplaceOneAsync(x => x.Id == workItem.Id, workItem,
-                replaceOptions);
             return workItem;
         }
 
-        public async Task DeleteWorkItem(string id)
+        public async Task DeleteWorkItem(Guid id)
         {
             await _dbContext.WorkItems.DeleteOneAsync(x => x.Id == id);
         }

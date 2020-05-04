@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Taskly.Workflow.Domain
@@ -7,7 +8,7 @@ namespace Taskly.Workflow.Domain
     {
         Task<List<Project>> GetProjects();
 
-        Task<Project> GetProject(string id);
+        Task<Project> GetProject(Guid id);
 
         Task<Project> SaveProject(Project project);
     }

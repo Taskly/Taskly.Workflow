@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -32,7 +33,7 @@ namespace Taskly.Workflow.WebApi.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<ProjectWorkItemsDto>> GetProject(string id)
+        public async Task<ActionResult<ProjectWorkItemsDto>> GetProject(Guid id)
         {
             Project project = await _projectsRepository.GetProject(id);
             List<WorkItem> workItems = await _workItemsRepository.GetWorkItemsByProject(project.Id);
@@ -43,14 +44,18 @@ namespace Taskly.Workflow.WebApi.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<WorkItemDto>> CreateProject([FromBody] ProjectCreateDto dto)
+        public async Task<ActionResult<ProjectWorkItemsDto>> CreateProject([FromBody] ProjectCreateDto dto)
         {
             List<WorkItemStatus> availableStatues =
                 dto.AvailableStatuses.Select(x => new WorkItemStatus(x.Title)).ToList();
 
             var project = new Project(dto.Title, dto.Description, availableStatues);
             project = await _projectsRepository.SaveProject(project);
-            return CreatedAtAction(nameof(GetProject), new { id = project.Id }, project);
+            var projectDto = new ProjectWorkItemsDto(project, new List<WorkItem>());
+
+            return CreatedAtAction(nameof(GetProject), new { id = project.Id }, projectDto);
+
+            // return Ok(project.Id);
         }
 
         private readonly IProjectsRepository _projectsRepository;
