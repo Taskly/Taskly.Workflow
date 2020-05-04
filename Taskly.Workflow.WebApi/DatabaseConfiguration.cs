@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Taskly.Workflow.Domain;
 using Taskly.Workflow.WebApi.Config;
 using Taskly.Workflow.WebApi.Database;
 
@@ -11,8 +12,8 @@ namespace Taskly.Workflow.WebApi
             DbContext dbContext = new DbContext(appConfig.Mongo);
 
             services.AddSingleton(dbContext);
-
-            // services.AddSingleton<IIdRepository, IdRepository>();
+            services.AddSingleton<IProjectsRepository, ProjectsRepository>();
+            services.AddSingleton<IWorkItemsRepository, WorkItemsRepository>();
         }
     }
 }

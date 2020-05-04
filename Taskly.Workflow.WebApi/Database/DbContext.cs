@@ -24,16 +24,17 @@ namespace Taskly.Workflow.WebApi.Database
 
         private void RegisterClassMaps()
         {
-            // cm.MapIdMember(x => x.Value);
             BsonClassMap.RegisterClassMap<Project>(cm =>
             {
                 cm.AutoMap();
+                cm.MapIdMember(x => x.Id);
                 cm.MapCreator(x => new Project(x.Title, x.Description, x.AvailableStatuses));
             });
 
             BsonClassMap.RegisterClassMap<WorkItem>(cm =>
             {
                 cm.AutoMap();
+                cm.MapIdMember(x => x.Id);
                 cm.MapCreator(x => new WorkItem(x.ProjectId, x.Title, x.Description, x.Status));
             });
         }
