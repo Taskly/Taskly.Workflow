@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Taskly.Workflow.Domain;
 using Taskly.Workflow.WebApi.Dto.Projects;
-using Taskly.Workflow.WebApi.Dto.WorkItems;
 
 namespace Taskly.Workflow.WebApi.Controllers
 {
