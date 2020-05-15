@@ -20,11 +20,10 @@ namespace Taskly.Workflow.WebApi.Controllers
 
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<ProjectsListDto>> GetProjectsList()
+        public async Task<ActionResult<List<ProjectDto>>> GetProjects()
         {
             List<Project> projects = await _projectsRepository.GetProjects();
-            List<ProjectDto> dtoItems = projects.Select(x => new ProjectDto(x)).ToList();
-            var dto = new ProjectsListDto(dtoItems);
+            List<ProjectDto> dto = projects.Select(x => new ProjectDto(x)).ToList();
             return Ok(dto);
         }
 
@@ -32,7 +31,7 @@ namespace Taskly.Workflow.WebApi.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<ProjectWorkItemsDto>> GetProject(Guid id)
+        public async Task<ActionResult<ProjectWorkItemsDto>> GetProject([FromRoute] Guid id)
         {
             Project project = await _projectsRepository.GetProject(id);
             List<WorkItem> workItems = await _workItemsRepository.GetWorkItemsByProject(project.Id);
@@ -53,8 +52,33 @@ namespace Taskly.Workflow.WebApi.Controllers
             var projectDto = new ProjectWorkItemsDto(project, new List<WorkItem>());
 
             return CreatedAtAction(nameof(GetProject), new { id = project.Id }, projectDto);
+        }
 
-            // return Ok(project.Id);
+        [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult> UpdateProject([FromRoute] Guid id, [FromBody] ProjectUpdateDto dto)
+        {
+            Project project = await _projectsRepository.GetProject(id);
+
+            if (!string.IsNullOrEmpty(dto.Title))
+            {
+                project.Title = dto.Title;
+            }
+
+            if (!string.IsNullOrEmpty(dto.Description))
+            {
+                project.Description = dto.Description;
+            }
+
+            if (dto.AvailableStatuses != null)
+            {
+                // TODO: Validate AvailableStatuses
+                project.AvailableStatuses = dto.AvailableStatuses.Select(x => x.ToModel()).ToList();
+            }
+
+            await _projectsRepository.SaveProject(project);
+            return Ok();
         }
 
         private readonly IProjectsRepository _projectsRepository;

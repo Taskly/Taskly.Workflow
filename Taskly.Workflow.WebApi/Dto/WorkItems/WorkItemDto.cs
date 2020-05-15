@@ -5,10 +5,6 @@ namespace Taskly.Workflow.WebApi.Dto.WorkItems
 {
     public class WorkItemDto
     {
-        public WorkItemDto()
-        {
-        }
-
         public WorkItemDto(WorkItem model)
         {
             Id = model.Id;

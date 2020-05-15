@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Taskly.Workflow.Domain
 {
@@ -15,7 +16,7 @@ namespace Taskly.Workflow.Domain
             Id = id;
             Title = title;
             Description = description;
-            _availableStatuses = new List<WorkItemStatus>(availableStatuses);
+            AvailableStatuses = availableStatuses.ToList();
         }
 
         public Guid Id { get; private set; }
@@ -24,8 +25,6 @@ namespace Taskly.Workflow.Domain
 
         public string Description { get; set; }
 
-        public IReadOnlyCollection<WorkItemStatus> AvailableStatuses => _availableStatuses;
-
-        private readonly List<WorkItemStatus> _availableStatuses;
+        public List<WorkItemStatus> AvailableStatuses { get; set; }
     }
 }

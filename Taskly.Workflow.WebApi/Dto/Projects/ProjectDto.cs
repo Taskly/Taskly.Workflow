@@ -8,10 +8,6 @@ namespace Taskly.Workflow.WebApi.Dto.Projects
 {
     public class ProjectDto
     {
-        public ProjectDto()
-        {
-        }
-
         public ProjectDto(Project model)
         {
             Id = model.Id;

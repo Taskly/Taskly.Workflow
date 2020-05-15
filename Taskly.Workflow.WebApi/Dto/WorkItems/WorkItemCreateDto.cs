@@ -4,10 +4,6 @@ namespace Taskly.Workflow.WebApi.Dto.WorkItems
 {
     public class WorkItemCreateDto
     {
-        public WorkItemCreateDto()
-        {
-        }
-
         public Guid ProjectId { get; set; }
 
         public string Title { get; set; }

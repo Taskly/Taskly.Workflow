@@ -14,5 +14,10 @@ namespace Taskly.Workflow.WebApi.Dto.WorkItems
         }
 
         public string Title { get; set; }
+
+        public WorkItemStatus ToModel()
+        {
+            return new WorkItemStatus(Title);
+        }
     }
 }
