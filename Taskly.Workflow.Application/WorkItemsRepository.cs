@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 using MongoDB.Driver;
 using Taskly.Workflow.Domain;
 
-namespace Taskly.Workflow.WebApi.Database
+namespace Taskly.Workflow.Application
 {
     public class WorkItemsRepository : IWorkItemsRepository
     {
-        public WorkItemsRepository(DbContext dbContext)
+        public WorkItemsRepository(AppDbContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -44,6 +44,6 @@ namespace Taskly.Workflow.WebApi.Database
             await _dbContext.WorkItems.DeleteOneAsync(x => x.Id == id);
         }
 
-        private readonly DbContext _dbContext;
+        private readonly AppDbContext _dbContext;
     }
 }

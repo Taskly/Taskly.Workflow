@@ -1,13 +1,13 @@
 ﻿using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
+using Taskly.Workflow.Application.Config;
 using Taskly.Workflow.Domain;
-using Taskly.Workflow.WebApi.Config;
 
-namespace Taskly.Workflow.WebApi.Database
+namespace Taskly.Workflow.Application
 {
-    public class DbContext
+    public class AppDbContext
     {
-        public DbContext(MongoConfig config)
+        public AppDbContext(MongoConfig config)
         {
             RegisterClassMaps();
 

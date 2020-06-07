@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Taskly.Workflow.Application;
+using Taskly.Workflow.Application.Config;
 using Taskly.Workflow.Domain;
-using Taskly.Workflow.WebApi.Config;
-using Taskly.Workflow.WebApi.Database;
 
 namespace Taskly.Workflow.WebApi
 {
@@ -9,7 +9,7 @@ namespace Taskly.Workflow.WebApi
     {
         internal static void AddDatabaseRepositories(this IServiceCollection services, AppConfig appConfig)
         {
-            DbContext dbContext = new DbContext(appConfig.Mongo);
+            AppDbContext dbContext = new AppDbContext(appConfig.Mongo);
 
             services.AddSingleton(dbContext);
             services.AddSingleton<IProjectsRepository, ProjectsRepository>();

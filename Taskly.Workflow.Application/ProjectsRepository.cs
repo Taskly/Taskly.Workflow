@@ -5,11 +5,11 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using Taskly.Workflow.Domain;
 
-namespace Taskly.Workflow.WebApi.Database
+namespace Taskly.Workflow.Application
 {
     public class ProjectsRepository : IProjectsRepository
     {
-        public ProjectsRepository(DbContext dbContext)
+        public ProjectsRepository(AppDbContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -41,6 +41,6 @@ namespace Taskly.Workflow.WebApi.Database
             return project;
         }
 
-        private readonly DbContext _dbContext;
+        private readonly AppDbContext _dbContext;
     }
 }
