@@ -6,12 +6,12 @@ namespace Taskly.Workflow.Domain
 {
     public interface IWorkItemsRepository
     {
-        Task<List<WorkItem>> GetWorkItemsByProject(Guid projectId);
+        Task<List<WorkItem>> GetWorkItemsByProject(string projectId);
 
-        Task<WorkItem> GetWorkItem(Guid id);
+        Task<WorkItem> GetWorkItem(string id);
 
         Task<WorkItem> SaveWorkItem(WorkItem workItem);
 
-        Task DeleteWorkItem(Guid id);
+        Task DeleteWorkItem(string id);
     }
 }

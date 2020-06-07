@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace Taskly.Workflow.Domain
@@ -7,11 +6,11 @@ namespace Taskly.Workflow.Domain
     public class Project
     {
         public Project(string title, string description, IEnumerable<WorkItemStatus> availableStatuses)
-            : this(Guid.Empty, title, description, availableStatuses)
+            : this(null, title, description, availableStatuses)
         {
         }
 
-        private Project(Guid id, string title, string description, IEnumerable<WorkItemStatus> availableStatuses)
+        private Project(string id, string title, string description, IEnumerable<WorkItemStatus> availableStatuses)
         {
             Id = id;
             Title = title;
@@ -19,7 +18,7 @@ namespace Taskly.Workflow.Domain
             AvailableStatuses = availableStatuses.ToList();
         }
 
-        public Guid Id { get; private set; }
+        public string Id { get; private set; }
 
         public string Title { get; set; }
 

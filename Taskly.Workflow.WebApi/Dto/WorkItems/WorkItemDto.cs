@@ -1,5 +1,4 @@
-﻿using System;
-using Taskly.Workflow.Domain;
+﻿using Taskly.Workflow.Domain;
 
 namespace Taskly.Workflow.WebApi.Dto.WorkItems
 {
@@ -13,7 +12,7 @@ namespace Taskly.Workflow.WebApi.Dto.WorkItems
             Status = new WorkItemStatusDto(model.Status);
         }
 
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         public string Title { get; set; }
 

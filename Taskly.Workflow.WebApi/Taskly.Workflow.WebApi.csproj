@@ -13,8 +13,4 @@
       <ProjectReference Include="..\Taskly.Workflow.Domain\Taskly.Workflow.Domain.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Database" />
-    </ItemGroup>
-
 </Project>

@@ -1,4 +1,7 @@
-﻿using MongoDB.Bson.Serialization;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson.Serialization.IdGenerators;
+using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
 using Taskly.Workflow.Application.Config;
 using Taskly.Workflow.Domain;
@@ -29,7 +32,9 @@ namespace Taskly.Workflow.Application
             BsonClassMap.RegisterClassMap<Project>(cm =>
             {
                 cm.AutoMap();
-                cm.MapIdMember(c => c.Id);
+                cm.MapIdProperty(x => x.Id)
+                    .SetIdGenerator(StringObjectIdGenerator.Instance)
+                    .SetSerializer(new StringSerializer(BsonType.ObjectId));
                 cm.MapMember(x => x.AvailableStatuses);
                 cm.MapCreator(x => new Project(x.Title, x.Description, x.AvailableStatuses));
             });
@@ -37,7 +42,9 @@ namespace Taskly.Workflow.Application
             BsonClassMap.RegisterClassMap<WorkItem>(cm =>
             {
                 cm.AutoMap();
-                cm.MapIdMember(c => c.Id);
+                cm.MapIdProperty(x => x.Id)
+                    .SetIdGenerator(StringObjectIdGenerator.Instance)
+                    .SetSerializer(new StringSerializer(BsonType.ObjectId));
                 cm.MapMember(x => x.ProjectId);
                 cm.MapCreator(x => new WorkItem(x.ProjectId, x.Title, x.Description, x.Status));
             });

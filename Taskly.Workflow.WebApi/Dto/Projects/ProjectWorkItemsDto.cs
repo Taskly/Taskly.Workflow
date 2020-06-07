@@ -17,7 +17,7 @@ namespace Taskly.Workflow.WebApi.Dto.Projects
             WorkItems = workItemsModel.Select(x => new WorkItemDto(x)).ToList();
         }
 
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         public string Title { get; set; }
 

@@ -21,7 +21,7 @@ namespace Taskly.Workflow.Application
             return projects;
         }
 
-        public async Task<Project> GetProject(Guid id)
+        public async Task<Project> GetProject(string id)
         {
             Project project = await _dbContext.Projects.Find(x => x.Id == id).FirstOrDefaultAsync();
             return project;
@@ -29,7 +29,7 @@ namespace Taskly.Workflow.Application
 
         public async Task<Project> SaveProject(Project project)
         {
-            if (project.Id == Guid.Empty)
+            if (project.Id is null)
             {
                 await _dbContext.Projects.InsertOneAsync(project);
             }

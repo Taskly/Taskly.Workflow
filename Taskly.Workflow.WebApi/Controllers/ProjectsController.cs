@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -31,7 +30,7 @@ namespace Taskly.Workflow.WebApi.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<ProjectWorkItemsDto>> GetProject([FromRoute] Guid id)
+        public async Task<ActionResult<ProjectWorkItemsDto>> GetProject(string id)
         {
             Project project = await _projectsRepository.GetProject(id);
             List<WorkItem> workItems = await _workItemsRepository.GetWorkItemsByProject(project.Id);
@@ -57,7 +56,7 @@ namespace Taskly.Workflow.WebApi.Controllers
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult> UpdateProject([FromRoute] Guid id, [FromBody] ProjectUpdateDto dto)
+        public async Task<ActionResult> UpdateProject(string id, [FromBody] ProjectUpdateDto dto)
         {
             Project project = await _projectsRepository.GetProject(id);
 

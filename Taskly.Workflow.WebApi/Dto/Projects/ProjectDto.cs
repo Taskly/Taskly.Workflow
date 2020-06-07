@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Taskly.Workflow.Domain;
 using Taskly.Workflow.WebApi.Dto.WorkItems;
@@ -16,7 +15,7 @@ namespace Taskly.Workflow.WebApi.Dto.Projects
             AvailableStatuses = model.AvailableStatuses.Select(x => new WorkItemStatusDto(x)).ToList();
         }
 
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         public string Title { get; set; }
 
