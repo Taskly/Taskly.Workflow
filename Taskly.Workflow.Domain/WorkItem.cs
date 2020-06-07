@@ -3,13 +3,7 @@
     public class WorkItem
     {
         public WorkItem(string projectId, string title, string description, WorkItemStatus status)
-            : this(null, projectId, title, description, status)
         {
-        }
-
-        private WorkItem(string id, string projectId, string title, string description, WorkItemStatus status)
-        {
-            Id = id;
             ProjectId = projectId;
             Title = title;
             Description = description;
@@ -18,12 +12,12 @@
 
         public string Id { get; private set; }
 
-        public string ProjectId { get; }
+        public string ProjectId { get; private set; }
 
-        public string Title { get; set; }
+        public string Title { get; private set; }
 
-        public string Description { get; set; }
+        public string Description { get; private set; }
 
-        public WorkItemStatus Status { get; set; }
+        public WorkItemStatus Status { get; private set; }
     }
 }

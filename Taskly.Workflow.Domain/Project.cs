@@ -1,29 +1,25 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
+using System.Collections.ObjectModel;
 
 namespace Taskly.Workflow.Domain
 {
     public class Project
     {
         public Project(string title, string description, IEnumerable<WorkItemStatus> availableStatuses)
-            : this(null, title, description, availableStatuses)
         {
-        }
-
-        private Project(string id, string title, string description, IEnumerable<WorkItemStatus> availableStatuses)
-        {
-            Id = id;
             Title = title;
             Description = description;
-            AvailableStatuses = availableStatuses.ToList();
+            _availableStatuses = new List<WorkItemStatus>(availableStatuses);
         }
 
         public string Id { get; private set; }
 
-        public string Title { get; set; }
+        public string Title { get; private set; }
 
-        public string Description { get; set; }
+        public string Description { get; private set; }
 
-        public List<WorkItemStatus> AvailableStatuses { get; set; }
+        public ReadOnlyCollection<WorkItemStatus> AvailableStatuses => _availableStatuses.AsReadOnly();
+
+        private readonly List<WorkItemStatus> _availableStatuses;
     }
 }

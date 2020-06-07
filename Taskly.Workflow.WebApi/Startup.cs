@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -21,6 +22,7 @@ namespace Taskly.Workflow.WebApi
             var appConfig = new AppConfig();
             Configuration.Bind(appConfig);
 
+            services.AddAutoMapper(typeof(DtoMappingProfile));
             services.AddDatabaseRepositories(appConfig);
             services.AddControllers();
             services.AddSwaggerDocumentation();

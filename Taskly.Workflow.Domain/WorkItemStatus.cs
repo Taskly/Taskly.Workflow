@@ -9,8 +9,6 @@ namespace Taskly.Workflow.Domain
             Title = title;
         }
 
-        public static WorkItemStatus Default => new WorkItemStatus("New");
-
         public string Title { get; }
 
         public override bool Equals(object obj)

@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Taskly.Workflow.Domain;
@@ -9,8 +10,9 @@ namespace Taskly.Workflow.WebApi.Controllers
     [Route("api/work-items")]
     public class WorkItemsController : ControllerBase
     {
-        public WorkItemsController(IWorkItemsRepository workItemsRepository)
+        public WorkItemsController(IMapper mapper, IWorkItemsRepository workItemsRepository)
         {
+            _mapper = mapper;
             _workItemsRepository = workItemsRepository;
         }
 
@@ -20,7 +22,7 @@ namespace Taskly.Workflow.WebApi.Controllers
         public async Task<ActionResult<WorkItemDto>> GetWorkItem(string id)
         {
             WorkItem workItem = await _workItemsRepository.GetWorkItem(id);
-            var dto = new WorkItemDto(workItem);
+            WorkItemDto dto = _mapper.Map<WorkItemDto>(workItem);
             return Ok(dto);
         }
 
@@ -29,14 +31,15 @@ namespace Taskly.Workflow.WebApi.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<WorkItemDto>> CreateWorkItem([FromBody] WorkItemCreateDto dto)
         {
-            // TODO: Validate dto.ProjectId (project exists)
-            var workItemStatus = new WorkItemStatus(dto.Status.Title);
+            var workItemStatus = new WorkItemStatus(dto.Status);
             var workItem = new WorkItem(dto.ProjectId, dto.Title, dto.Description, workItemStatus);
             workItem = await _workItemsRepository.SaveWorkItem(workItem);
-            return CreatedAtAction(nameof(GetWorkItem), new { id = workItem.Id }, workItem);
+
+            var createdDto = _mapper.Map<WorkItemDto>(workItem);
+            return CreatedAtAction(nameof(GetWorkItem), new { id = createdDto.Id }, createdDto);
         }
 
-        [HttpPut("{id}")]
+        /*[HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> UpdateWorkItem(string id, [FromBody] WorkItemUpdateDto dto)
@@ -61,7 +64,7 @@ namespace Taskly.Workflow.WebApi.Controllers
 
             await _workItemsRepository.SaveWorkItem(workItem);
             return Ok();
-        }
+        }*/
 
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -72,6 +75,7 @@ namespace Taskly.Workflow.WebApi.Controllers
             return NoContent();
         }
 
+        private readonly IMapper _mapper;
         private readonly IWorkItemsRepository _workItemsRepository;
     }
 }

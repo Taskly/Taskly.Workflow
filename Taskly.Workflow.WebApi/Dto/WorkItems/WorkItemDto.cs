@@ -1,23 +1,21 @@
-﻿using Taskly.Workflow.Domain;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Taskly.Workflow.WebApi.Dto.WorkItems
 {
     public class WorkItemDto
     {
-        public WorkItemDto(WorkItem model)
-        {
-            Id = model.Id;
-            Title = model.Title;
-            Description = model.Description;
-            Status = new WorkItemStatusDto(model.Status);
-        }
-
+        [Required]
         public string Id { get; set; }
 
+        [Required]
+        public string ProjectId { get; set; }
+
+        [Required]
         public string Title { get; set; }
 
         public string Description { get; set; }
 
-        public WorkItemStatusDto Status { get; set; }
+        [Required]
+        public string Status { get; set; }
     }
 }
