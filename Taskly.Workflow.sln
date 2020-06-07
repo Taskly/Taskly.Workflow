@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Taskly.Workflow.Application
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Taskly.Workflow.Tests", "Taskly.Workflow.Tests\Taskly.Workflow.Tests.csproj", "{21E6DB59-52DC-4AB0-98D6-66716BB78BF2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Taskly.Workflow.IntegrationTests", "Taskly.Workflow.IntegrationTests\Taskly.Workflow.IntegrationTests.csproj", "{B5F02AEB-F6DA-4691-AC1F-77E581DE2FE7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,5 +74,17 @@ Global
 		{21E6DB59-52DC-4AB0-98D6-66716BB78BF2}.Release|x64.Build.0 = Release|Any CPU
 		{21E6DB59-52DC-4AB0-98D6-66716BB78BF2}.Release|x86.ActiveCfg = Release|Any CPU
 		{21E6DB59-52DC-4AB0-98D6-66716BB78BF2}.Release|x86.Build.0 = Release|Any CPU
+		{B5F02AEB-F6DA-4691-AC1F-77E581DE2FE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5F02AEB-F6DA-4691-AC1F-77E581DE2FE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5F02AEB-F6DA-4691-AC1F-77E581DE2FE7}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B5F02AEB-F6DA-4691-AC1F-77E581DE2FE7}.Debug|x64.Build.0 = Debug|Any CPU
+		{B5F02AEB-F6DA-4691-AC1F-77E581DE2FE7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B5F02AEB-F6DA-4691-AC1F-77E581DE2FE7}.Debug|x86.Build.0 = Debug|Any CPU
+		{B5F02AEB-F6DA-4691-AC1F-77E581DE2FE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5F02AEB-F6DA-4691-AC1F-77E581DE2FE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5F02AEB-F6DA-4691-AC1F-77E581DE2FE7}.Release|x64.ActiveCfg = Release|Any CPU
+		{B5F02AEB-F6DA-4691-AC1F-77E581DE2FE7}.Release|x64.Build.0 = Release|Any CPU
+		{B5F02AEB-F6DA-4691-AC1F-77E581DE2FE7}.Release|x86.ActiveCfg = Release|Any CPU
+		{B5F02AEB-F6DA-4691-AC1F-77E581DE2FE7}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
