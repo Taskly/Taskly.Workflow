@@ -1,4 +1,6 @@
-﻿namespace Taskly.Workflow.Domain
+﻿using System;
+
+namespace Taskly.Workflow.Domain
 {
     public class WorkItem
     {
@@ -8,6 +10,8 @@
             Title = title;
             Description = description;
             Status = status;
+
+            Created = DateTime.UtcNow;
         }
 
         public string Id { get; private set; }
@@ -17,6 +21,8 @@
         public string Title { get; private set; }
 
         public string Description { get; private set; }
+
+        public DateTime Created { get; private set; }
 
         public WorkItemStatus Status { get; private set; }
     }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Taskly.Workflow.WebApi.Dto.WorkItems
 {
@@ -14,6 +15,9 @@ namespace Taskly.Workflow.WebApi.Dto.WorkItems
         public string Title { get; set; }
 
         public string Description { get; set; }
+
+        [Required]
+        public DateTime Created { get; set; }
 
         [Required]
         public string Status { get; set; }

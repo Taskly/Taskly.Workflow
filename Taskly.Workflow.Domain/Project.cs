@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace Taskly.Workflow.Domain
@@ -10,6 +11,8 @@ namespace Taskly.Workflow.Domain
             Title = title;
             Description = description;
             _availableStatuses = new List<WorkItemStatus>(availableStatuses);
+
+            Created = DateTime.UtcNow;
         }
 
         public string Id { get; private set; }
@@ -17,6 +20,8 @@ namespace Taskly.Workflow.Domain
         public string Title { get; private set; }
 
         public string Description { get; private set; }
+
+        public DateTime Created { get; private set; }
 
         public ReadOnlyCollection<WorkItemStatus> AvailableStatuses => _availableStatuses.AsReadOnly();
 

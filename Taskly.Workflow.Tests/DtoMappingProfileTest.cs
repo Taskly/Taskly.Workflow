@@ -34,6 +34,7 @@ namespace Taskly.Workflow.Tests
             Assert.AreEqual("Some Title", projectDto.Title);
             Assert.AreEqual("Short Description", projectDto.Description);
             Assert.IsNotNull(projectDto.AvailableStatuses);
+            Assert.AreEqual(project.Created, projectDto.Created);
             Assert.AreEqual(2, projectDto.AvailableStatuses.Count);
             Assert.AreEqual("first_status", projectDto.AvailableStatuses[0]);
             Assert.AreEqual("second_status", projectDto.AvailableStatuses[1]);
@@ -49,6 +50,7 @@ namespace Taskly.Workflow.Tests
             Assert.AreEqual("42asd", workItemDto.ProjectId);
             Assert.AreEqual("Task Title", workItemDto.Title);
             Assert.AreEqual("Task Description", workItemDto.Description);
+            Assert.AreEqual(workItem.Created, workItemDto.Created);
             Assert.AreEqual("one", workItemDto.Status);
         }
 
