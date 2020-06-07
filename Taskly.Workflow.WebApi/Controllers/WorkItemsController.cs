@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +15,15 @@ namespace Taskly.Workflow.WebApi.Controllers
         {
             _mapper = mapper;
             _workItemsRepository = workItemsRepository;
+        }
+
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<WorkItemDto>> GetWorkItems(string projectId)
+        {
+            List<WorkItem> workItems = await _workItemsRepository.GetWorkItemsByProject(projectId);
+            List<WorkItemDto> dto = _mapper.Map<List<WorkItemDto>>(workItems);
+            return Ok(dto);
         }
 
         [HttpGet("{id}")]
