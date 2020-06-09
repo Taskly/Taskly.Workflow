@@ -36,7 +36,6 @@ namespace Taskly.Workflow.Application
                     .SetIdGenerator(StringObjectIdGenerator.Instance)
                     .SetSerializer(new StringSerializer(BsonType.ObjectId));
                 cm.MapMember(x => x.AvailableStatuses);
-                cm.MapCreator(x => new Project(x.Title, x.Description, x.AvailableStatuses));
             });
 
             BsonClassMap.RegisterClassMap<WorkItem>(cm =>
@@ -46,7 +45,6 @@ namespace Taskly.Workflow.Application
                     .SetIdGenerator(StringObjectIdGenerator.Instance)
                     .SetSerializer(new StringSerializer(BsonType.ObjectId));
                 cm.MapMember(x => x.ProjectId);
-                cm.MapCreator(x => new WorkItem(x.ProjectId, x.Title, x.Description, x.Status));
             });
         }
     }

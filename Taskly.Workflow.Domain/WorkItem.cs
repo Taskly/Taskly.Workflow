@@ -14,6 +14,10 @@ namespace Taskly.Workflow.Domain
             Created = DateTime.UtcNow;
         }
 
+        private WorkItem()
+        {
+        }
+
         public string Id { get; private set; }
 
         public string ProjectId { get; private set; }
